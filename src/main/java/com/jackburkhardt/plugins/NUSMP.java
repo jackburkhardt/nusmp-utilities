@@ -1,5 +1,7 @@
 package com.jackburkhardt.plugins;
 
+import com.jackburkhardt.plugins.climate.Climate;
+import com.jackburkhardt.plugins.listeners.Listeners;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -8,8 +10,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NUSMP extends JavaPlugin {
 
+    private static NUSMP instance;
+    public static Climate climate;
+
     @Override
     public void onEnable() {
+
+        getServer().getPluginManager().registerEvents(new Listeners(), this);
+        instance = this;
+        climate = new Climate();
 
     }
 
@@ -21,5 +30,11 @@ public final class NUSMP extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         return true;
+    }
+
+    public static NUSMP getInstance() {
+
+        return instance;
+
     }
 }
