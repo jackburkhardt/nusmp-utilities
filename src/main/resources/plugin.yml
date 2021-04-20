@@ -1,8 +1,15 @@
 name: nusmp-utilities
 version: ${project.version}
-main: com.jackburkhardt.plugins.nusmp
+main: com.jackburkhardt.plugins.NUSMP
 api-version: 1.16
 prefix: NUSMP
 authors: [ JackBurkhardt ]
 description: Utilities plugin for the Northwestern Survival Server.
 website: https://jackburkhardt.com/
+commands:
+  noreload:
+    permission: noreload.send
+
+permissions:
+  noreload.send:
+    default: op
