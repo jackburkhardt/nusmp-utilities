@@ -9,6 +9,8 @@ website: https://jackburkhardt.com/
 commands:
   noreload:
     permission: noreload.send
+  meow:
+    description: Meows.
 
 permissions:
   noreload.send:
