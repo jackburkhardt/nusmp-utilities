@@ -36,7 +36,7 @@ public final class NUSMP extends JavaPlugin {
         if (command.getName().equalsIgnoreCase("noreload")) {
             sender.sendMessage(ChatColor.RED + "Imagine using /reload in 2021. Tsk tsk.");
         }
-
+// meow
         if (command.getName().equalsIgnoreCase("meow")) {
             Player meower = sender.getServer().getPlayer(sender.getName());
             meower.getWorld().playSound(meower.getLocation(), Sound.ENTITY_CAT_PURREOW, 10, 1);
