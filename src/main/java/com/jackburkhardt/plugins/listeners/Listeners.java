@@ -12,16 +12,20 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class Listeners implements Listener {
 
-    // TODO: Put location listener on like a 30s timer or something
-    @EventHandler
-    public static void onPlayerMove(PlayerMoveEvent event) {
-        //NUSMP.climate.checkPlayerClimate(event.getPlayer());
-    }
+//    // TODO: Put location listener on like a 30s timer or something
+//    @EventHandler
+//    public static void onPlayerMove(PlayerMoveEvent event) {
+//        //NUSMP.climate.checkPlayerClimate(event.getPlayer());
+//    }
 
     @EventHandler
     public static void onCreatureSpawn(CreatureSpawnEvent event) {
         if (event.getEntity() instanceof Monster) {
-            WorldScalars.mobSpawnDistanceCheck(event);
+            try {
+                WorldScalars.mobSpawnDistanceCheck(event);
+            } catch (Exception ex) {
+               return;
+            }
         }
     }
 
