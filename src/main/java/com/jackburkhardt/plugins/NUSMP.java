@@ -1,6 +1,5 @@
 package com.jackburkhardt.plugins;
 
-import com.jackburkhardt.plugins.climate.Climate;
 import com.jackburkhardt.plugins.listeners.Listeners;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -14,14 +13,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class NUSMP extends JavaPlugin {
 
     private static NUSMP instance;
-    public static Climate climate;
+    public static WorldScalers scalarInstance = new WorldScalers();
 
     @Override
     public void onEnable() {
 
         getServer().getPluginManager().registerEvents(new Listeners(), this);
         instance = this;
-        climate = new Climate();
 
     }
 
@@ -34,20 +32,24 @@ public final class NUSMP extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (command.getName().equalsIgnoreCase("noreload")) {
-            sender.sendMessage(ChatColor.RED + "Imagine using /reload in 2021. Tsk tsk.");
+            sender.sendMessage(ChatColor.RED + "no use");
+            return true;
         }
 // meow
-        if (command.getName().equalsIgnoreCase("meow")) {
-            Player meower = sender.getServer().getPlayer(sender.getName());
-            meower.getWorld().playSound(meower.getLocation(), Sound.ENTITY_CAT_PURREOW, 10, 1);
-        }
+//        if (command.getName().equalsIgnoreCase("meow")) {
+//            meower.getWorld().playSound(meower.getLocation(), Sound.ENTITY_CAT_AMBIENT, 10, 1);
+//            return true;
+//        }
 
-        return true;
+    return true;
     }
 
     public static NUSMP getInstance() {
 
         return instance;
 
+    }
+    public static WorldScalers getScalarInstance() {
+        return scalarInstance;
     }
 }
