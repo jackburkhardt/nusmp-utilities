@@ -32,7 +32,8 @@ public final class NUSMP extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (command.getName().equalsIgnoreCase("noreload")) {
-            sender.sendMessage(ChatColor.RED + "no use");
+            sender.sendMessage(ChatColor.RED + "/reload has been disabled, as it causes CPU and memory leaks. Please reload" +
+                    " individual plugins or restart the server.");
             return true;
         }
 // meow
