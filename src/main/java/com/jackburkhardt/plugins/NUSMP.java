@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class NUSMP extends JavaPlugin {
 
     private static NUSMP instance;
-    public static WorldScalers scalarInstance = new WorldScalers();
+    public static WorldScalars scalarInstance = new WorldScalars();
 
     @Override
     public void onEnable() {
@@ -50,7 +50,7 @@ public final class NUSMP extends JavaPlugin {
         return instance;
 
     }
-    public static WorldScalers getScalarInstance() {
+    public static WorldScalars getScalarInstance() {
         return scalarInstance;
     }
 }
