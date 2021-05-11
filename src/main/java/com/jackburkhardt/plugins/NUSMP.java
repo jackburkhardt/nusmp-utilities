@@ -72,8 +72,11 @@ public final class NUSMP extends JavaPlugin {
             return true;
         }
 
-        if (command.getName().equalsIgnoreCase("nusmp") && args[0].equalsIgnoreCase("reload")) {
-            if (sender.hasPermission("nusmp.reload")) {
+        if (command.getName().equalsIgnoreCase("nusmp")) {
+            if (args.length == 0) {
+                sender.sendMessage("nusmp-utilities is a plugin made by Jack Burkhardt for the Northwestern Survival Server.");
+            }
+            if (args[0].equalsIgnoreCase("reload") && sender.hasPermission("nusmp.reload")) {
                 reloadConfig();
                 sender.sendMessage(ChatColor.GREEN + "NUSMP plugin config reloaded.");
             }
