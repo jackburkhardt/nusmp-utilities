@@ -13,7 +13,11 @@ commands:
     description: Meows.
   poggers:
     description: POGGERS!
+  nusmp:
+    description: General command for nusmp-utilities.
 
 permissions:
   noreload.send:
+    default: op
+  nusmp.reload:
     default: op

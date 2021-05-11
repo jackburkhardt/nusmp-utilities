@@ -72,6 +72,13 @@ public final class NUSMP extends JavaPlugin {
             return true;
         }
 
+        if (command.getName().equalsIgnoreCase("nusmp") && args[0].equalsIgnoreCase("reload")) {
+            if (sender.hasPermission("nusmp.reload")) {
+                reloadConfig();
+                sender.sendMessage(ChatColor.GREEN + "NUSMP plugin config reloaded.");
+            }
+        }
+
     return true;
     }
 

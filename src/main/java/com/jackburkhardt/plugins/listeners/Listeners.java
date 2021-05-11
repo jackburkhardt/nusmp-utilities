@@ -78,15 +78,15 @@ public class Listeners implements Listener {
             if (activated) {
                 Location loc = p.getLocation();
                 Location cloc = event.getLootContext().getLocation();
-                for (float i = (float)0.04; i <= 1; i += 0.3) {
-                    p.playSound(loc, Sound.BLOCK_NOTE_BLOCK_FLUTE, 10, i);
+                for (float i = (float)0.5; i <= 1; i += 0.3) {
+                    p.playSound(loc, Sound.BLOCK_NOTE_BLOCK_FLUTE, 5, i);
                 }
-                cloc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, cloc, 2);
+                cloc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, cloc, 10,0.4,0.4,0.4);
                 p.sendMessage(ChatColor.GREEN + "Your Luck potion let you find some extra items!");
             }
         }
     }
-//
+
 //    @EventHandler
 //    public static void onEntityDamageEntity(EntityDamageByEntityEvent event) {
 //        if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity) {
