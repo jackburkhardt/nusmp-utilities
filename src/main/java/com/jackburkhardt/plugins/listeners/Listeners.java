@@ -39,11 +39,11 @@ public class Listeners implements Listener {
                 illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
                 illusioner.setHealth(40);
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
-            } else if (i <= 10) {
+            } else if (i <= 8) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.VINDICATOR);
                 Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
-            } else if (i <= 40) {
+            } else if (i <= 30) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.CAVE_SPIDER);
                 Bukkit.broadcastMessage("Mob CAVESPIDER spawn at " + l);
