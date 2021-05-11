@@ -81,7 +81,7 @@ public class Listeners implements Listener {
                 for (float i = (float)0.5; i <= 1; i += 0.3) {
                     p.playSound(loc, Sound.BLOCK_NOTE_BLOCK_FLUTE, 5, i);
                 }
-                cloc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, cloc, 10,0.4,0.4,0.4);
+                cloc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, cloc, 15,0.5,0.5,0.5);
                 p.sendMessage(ChatColor.GREEN + "Your Luck potion let you find some extra items!");
             }
         }
