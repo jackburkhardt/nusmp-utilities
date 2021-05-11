@@ -13,9 +13,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.loot.LootContext;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Listeners implements Listener {
 
@@ -32,21 +36,21 @@ public class Listeners implements Listener {
                 Evoker evoker = (Evoker)w.spawnEntity(l, EntityType.EVOKER);
                 evoker.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.EVOKER_NEWHEALTH);
                 evoker.setHealth(NUSMP.EVOKER_NEWHEALTH);
-                Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob EVOKER spawn at " + l + " with HEALTH " + evoker.getHealth());
+              //  Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob EVOKER spawn at " + l + " with HEALTH " + evoker.getHealth());
             } else if (i <= NUSMP.ILLUSONER_CHANCE) {
                 event.setCancelled(true);
                 Illusioner illusioner = (Illusioner)w.spawnEntity(l, EntityType.ILLUSIONER);
                 illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.ILLUSIONER_NEWHEALTH);
                 illusioner.setHealth(NUSMP.ILLUSIONER_NEWHEALTH);
-                Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
+               // Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
             } else if (i <= NUSMP.VINDICATOR_CHANCE) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.VINDICATOR);
-                Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
+              //  Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
             } else if (i <= NUSMP.CAVESPIDER_CHANCE) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.CAVE_SPIDER);
-                Bukkit.broadcastMessage("Mob CAVESPIDER spawn at " + l);
+              //  Bukkit.broadcastMessage("Mob CAVESPIDER spawn at " + l);
             }
 //            try {
 //                WorldScalars.mobSpawnDistanceCheck(event);
@@ -54,6 +58,31 @@ public class Listeners implements Listener {
 //               return;
 //            }
 //        }
+        }
+    }
+
+    @EventHandler
+    public static void onLootGenerate(LootGenerateEvent event) {
+        if (event.getEntity() instanceof Player && ((Player) event.getEntity()).hasPotionEffect(PotionEffectType.LUCK)) {
+            Player p = (Player)event.getEntity();
+            Random rnd = new Random();
+            boolean activated = false;
+            for (ItemStack stack : event.getLoot()) {
+                int r = rnd.nextInt(100);
+                if (r < 10) {
+                    stack.add(1);
+                    activated = true;
+                    p.sendMessage("ADDED one to stack " + stack);
+                }
+            }
+            if (activated) {
+                Location loc = p.getLocation();
+                for (float i = (float)0.04; i <= 1; i += 0.3) {
+                    p.playSound(loc, Sound.BLOCK_NOTE_BLOCK_FLUTE, 10, i);
+                    //TimeUnit.MILLISECONDS.sleep(100);
+                }
+                p.sendMessage(ChatColor.GREEN + "Your Luck potion let you find some extra items!");
+            }
         }
     }
 //

@@ -46,4 +46,5 @@ public class WorldScalars {
 //        p.sendMessage("Spawned mob with damage " + newDamage);
 //        return newDamage;
 //    }
+
 }
