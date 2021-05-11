@@ -5,6 +5,8 @@ import com.jackburkhardt.plugins.WorldScalars;
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobSpawnEvent;
 import io.papermc.paper.event.player.PlayerTradeEvent;
 import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,15 +27,19 @@ public class Listeners implements Listener {
         && event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.NATURAL) {
             Random rnd = new Random();
             int i = rnd.nextInt(1000) + 1;
-            if (i <= 2) {
+            if (i == 1) {
                 event.setCancelled(true);
-                w.spawnEntity(l, EntityType.EVOKER);
-                Bukkit.broadcastMessage("Mob EVOKER spawn at " + l);
-            } else if (i <= 6) {
+                Evoker evoker = (Evoker)w.spawnEntity(l, EntityType.EVOKER);
+                evoker.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(50);
+                evoker.setHealth(50);
+                Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob EVOKER spawn at " + l + " with HEALTH " + evoker.getHealth());
+            } else if (i <= 4) {
                 event.setCancelled(true);
-                w.spawnEntity(l, EntityType.ILLUSIONER);
-                Bukkit.broadcastMessage("Mob ILLUSIONER spawn at " + l);
-            } else if (i <= 20) {
+                Illusioner illusioner = (Illusioner)w.spawnEntity(l, EntityType.ILLUSIONER);
+                illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
+                illusioner.setHealth(40);
+                Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
+            } else if (i <= 10) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.VINDICATOR);
                 Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
