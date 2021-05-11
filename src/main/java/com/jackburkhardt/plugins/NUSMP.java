@@ -24,13 +24,7 @@ public final class NUSMP extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
 
-        EVOKER_CHANCE = getConfig().getInt("evokerChance");
-        EVOKER_NEWHEALTH = getConfig().getInt("evokerHealth");
-        ILLUSONER_CHANCE = getConfig().getInt("illusionerChance");
-        ILLUSIONER_NEWHEALTH = getConfig().getInt("illusionerHealth");
-        VINDICATOR_CHANCE = getConfig().getInt("vindicatorChance");
-        CAVESPIDER_CHANCE = getConfig().getInt("caveSpiderChance");
-        LUCK_ADD_CHANCE = getConfig().getInt("addOneChance");
+        reloadConfVars();
 
     }
 
@@ -78,11 +72,22 @@ public final class NUSMP extends JavaPlugin {
             }
             if (args[0].equalsIgnoreCase("reload") && sender.hasPermission("nusmp.reload")) {
                 reloadConfig();
+                reloadConfVars();
                 sender.sendMessage(ChatColor.GREEN + "NUSMP plugin config reloaded.");
             }
         }
 
     return true;
+    }
+
+    public void reloadConfVars() {
+        EVOKER_CHANCE = getConfig().getInt("evokerChance");
+        EVOKER_NEWHEALTH = getConfig().getInt("evokerHealth");
+        ILLUSONER_CHANCE = getConfig().getInt("illusionerChance");
+        ILLUSIONER_NEWHEALTH = getConfig().getInt("illusionerHealth");
+        VINDICATOR_CHANCE = getConfig().getInt("vindicatorChance");
+        CAVESPIDER_CHANCE = getConfig().getInt("caveSpiderChance");
+        LUCK_ADD_CHANCE = getConfig().getInt("addOneChance");
     }
 
     public static NUSMP getInstance() {
