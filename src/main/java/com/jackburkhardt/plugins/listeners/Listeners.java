@@ -69,7 +69,7 @@ public class Listeners implements Listener {
             boolean activated = false;
             for (ItemStack stack : event.getLoot()) {
                 int r = rnd.nextInt(100);
-                if (r < 10) {
+                if (r < 8) {
                     stack.add(1);
                     activated = true;
                     p.sendMessage("ADDED one to stack " + stack);
@@ -77,10 +77,11 @@ public class Listeners implements Listener {
             }
             if (activated) {
                 Location loc = p.getLocation();
+                Location cloc = event.getLootContext().getLocation();
                 for (float i = (float)0.04; i <= 1; i += 0.3) {
                     p.playSound(loc, Sound.BLOCK_NOTE_BLOCK_FLUTE, 10, i);
-                    //TimeUnit.MILLISECONDS.sleep(100);
                 }
+                cloc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, cloc, 2);
                 p.sendMessage(ChatColor.GREEN + "Your Luck potion let you find some extra items!");
             }
         }
