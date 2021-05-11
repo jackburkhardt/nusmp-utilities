@@ -14,12 +14,22 @@ public final class NUSMP extends JavaPlugin {
 
     private static NUSMP instance;
     public static WorldScalars scalarInstance = new WorldScalars();
+    public static int EVOKER_CHANCE, VINDICATOR_CHANCE, CAVESPIDER_CHANCE, ILLUSONER_CHANCE;
+    public static int EVOKER_NEWHEALTH, ILLUSIONER_NEWHEALTH;
 
     @Override
     public void onEnable() {
 
         getServer().getPluginManager().registerEvents(new Listeners(), this);
         instance = this;
+        saveDefaultConfig();
+
+        EVOKER_CHANCE = getConfig().getInt("evokerChance");
+        EVOKER_NEWHEALTH = getConfig().getInt("evokerHealth");
+        ILLUSONER_CHANCE = getConfig().getInt("illusionerChance");
+        ILLUSIONER_NEWHEALTH = getConfig().getInt("illusionerHealth");
+        VINDICATOR_CHANCE = getConfig().getInt("vindicatorChance");
+        CAVESPIDER_CHANCE = getConfig().getInt("caveSpiderChance");
 
     }
 

@@ -1,0 +1,18 @@
+# This is the nusmp-utilities config file. If you are using this plugin on another server,
+# a lot of this will probably not make any sense. Created by https://jackburkhardt.com
+
+# Chances for mob spawns, picked by a random number out of 1000. So these should be listed in order,
+# with the chance you want being the previous range end + the % chance (out of 1000). Examples are listed below.
+
+# This is 1/1000 or 0.01%
+evokerChance: 1
+# This is (3-1)/1000 or 0.02%
+illusionerChance: 3
+# This is (5-3)/1000 or also 0.02%
+vindicatorChance: 5
+# This is (20-5)/1000 or 1.5%
+caveSpiderChance: 20
+
+# Below is health modification for certain mobs when randomly spawned by the above chances
+evokerHealth: 50
+illusionerHealth: 40

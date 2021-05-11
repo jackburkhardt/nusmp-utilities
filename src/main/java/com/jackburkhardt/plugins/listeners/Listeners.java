@@ -27,23 +27,23 @@ public class Listeners implements Listener {
         && event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.NATURAL) {
             Random rnd = new Random();
             int i = rnd.nextInt(1000) + 1;
-            if (i == 1) {
+            if (i <= NUSMP.EVOKER_CHANCE) {
                 event.setCancelled(true);
                 Evoker evoker = (Evoker)w.spawnEntity(l, EntityType.EVOKER);
-                evoker.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(50);
-                evoker.setHealth(50);
+                evoker.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.EVOKER_NEWHEALTH);
+                evoker.setHealth(NUSMP.EVOKER_NEWHEALTH);
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob EVOKER spawn at " + l + " with HEALTH " + evoker.getHealth());
-            } else if (i <= 3) {
+            } else if (i <= NUSMP.ILLUSONER_CHANCE) {
                 event.setCancelled(true);
                 Illusioner illusioner = (Illusioner)w.spawnEntity(l, EntityType.ILLUSIONER);
-                illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
-                illusioner.setHealth(40);
+                illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.ILLUSIONER_NEWHEALTH);
+                illusioner.setHealth(NUSMP.ILLUSIONER_NEWHEALTH);
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
-            } else if (i <= 5) {
+            } else if (i <= NUSMP.VINDICATOR_CHANCE) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.VINDICATOR);
                 Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
-            } else if (i <= 20) {
+            } else if (i <= NUSMP.CAVESPIDER_CHANCE) {
                 event.setCancelled(true);
                 w.spawnEntity(l, EntityType.CAVE_SPIDER);
                 Bukkit.broadcastMessage("Mob CAVESPIDER spawn at " + l);
