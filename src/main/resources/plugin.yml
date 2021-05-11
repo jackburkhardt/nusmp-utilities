@@ -11,6 +11,8 @@ commands:
     permission: noreload.send
   meow:
     description: Meows.
+  poggers:
+    description: POGGERS!
 
 permissions:
   noreload.send:
