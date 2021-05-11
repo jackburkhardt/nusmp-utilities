@@ -15,7 +15,7 @@ public final class NUSMP extends JavaPlugin {
     private static NUSMP instance;
     public static WorldScalars scalarInstance = new WorldScalars();
     public static int EVOKER_CHANCE, VINDICATOR_CHANCE, CAVESPIDER_CHANCE, ILLUSONER_CHANCE;
-    public static int EVOKER_NEWHEALTH, ILLUSIONER_NEWHEALTH;
+    public static int EVOKER_NEWHEALTH, ILLUSIONER_NEWHEALTH, LUCK_ADD_CHANCE;
 
     @Override
     public void onEnable() {
@@ -30,6 +30,7 @@ public final class NUSMP extends JavaPlugin {
         ILLUSIONER_NEWHEALTH = getConfig().getInt("illusionerHealth");
         VINDICATOR_CHANCE = getConfig().getInt("vindicatorChance");
         CAVESPIDER_CHANCE = getConfig().getInt("caveSpiderChance");
+        LUCK_ADD_CHANCE = getConfig().getInt("addOneChance");
 
     }
 

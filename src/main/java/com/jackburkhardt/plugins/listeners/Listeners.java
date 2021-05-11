@@ -68,8 +68,8 @@ public class Listeners implements Listener {
             Random rnd = new Random();
             boolean activated = false;
             for (ItemStack stack : event.getLoot()) {
-                int r = rnd.nextInt(100);
-                if (r < 8) {
+                int r = rnd.nextInt(100) + 1;
+                if (r <= NUSMP.LUCK_ADD_CHANCE) {
                     stack.add(1);
                     activated = true;
                     p.sendMessage("ADDED one to stack " + stack);

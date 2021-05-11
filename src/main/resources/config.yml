@@ -16,3 +16,6 @@ caveSpiderChance: 20
 # Below is health modification for certain mobs when randomly spawned by the above chances
 evokerHealth: 50
 illusionerHealth: 40
+
+# Percent chance that an itemstack in generated loot will have 1 item added to it
+addOneChance: 9
