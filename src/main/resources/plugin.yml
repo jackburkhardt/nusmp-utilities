@@ -15,9 +15,11 @@ commands:
     description: POGGERS!
   nusmp:
     description: General command for nusmp-utilities.
+    permission-message: You don't have permission to do that.
   givestarterbook:
     description: Gives the starting book.
     usage: /givestarterbook <player (optional)>
+    permission-message: You don't have permission to give a book to another player.
 
 permissions:
   noreload.send:
