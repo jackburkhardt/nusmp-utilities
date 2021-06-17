@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.ItemStack;
@@ -72,7 +73,7 @@ public class Listeners implements Listener {
                 if (r <= NUSMP.LUCK_ADD_CHANCE) {
                     stack.add(1);
                     activated = true;
-                    p.sendMessage("ADDED one to stack " + stack);
+                    //p.sendMessage("ADDED one to stack " + stack);
                 }
             }
             if (activated) {
@@ -94,13 +95,21 @@ public class Listeners implements Listener {
 //            event.getDamager().sendMessage("Mob now on health " + e.getHealth());
 //        }
 //    }
+//    @EventHandler
+//    public static void onPlayerTrade(PlayerTradeEvent event) {
+//        if (event.getVillager().getType() != EntityType.WANDERING_TRADER) {
+//            if (((Villager) event.getVillager()).getProfession() == Villager.Profession.CARTOGRAPHER && event.getTrade().getIngredients().contains(new ItemStack(Material.COMPASS))) {
+//                event.getPlayer().sendMessage(ChatColor.YELLOW + "It looks like you're trading with a Cartographer villager. Please note that due" +
+//                        " to our world generation system, Cartographer ocean and mansion maps will not work properly!");
+//            }
+//        }
+//    }
+
     @EventHandler
-    public static void onPlayerTrade(PlayerTradeEvent event) {
-        if (event.getVillager().getType() != EntityType.WANDERING_TRADER) {
-            if (((Villager) event.getVillager()).getProfession() == Villager.Profession.CARTOGRAPHER && event.getTrade().getIngredients().contains(new ItemStack(Material.COMPASS))) {
-                event.getPlayer().sendMessage(ChatColor.YELLOW + "It looks like you're trading with a Cartographer villager. Please note that due" +
-                        " to our world generation system, Cartographer ocean and mansion maps will not work properly!");
-            }
+    public static void onPlayerJoin(PlayerJoinEvent event) {
+        Player p = event.getPlayer();
+        if (!p.hasPlayedBefore()) {
+            NUSMP.getInstance().giveStarterBook(p);
         }
     }
 }

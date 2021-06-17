@@ -15,9 +15,14 @@ commands:
     description: POGGERS!
   nusmp:
     description: General command for nusmp-utilities.
+  givestarterbook:
+    description: Gives the starting book.
+    usage: /givestarterbook <player (optional)>
 
 permissions:
   noreload.send:
     default: op
   nusmp.reload:
+    default: op
+  nusmp.givebookother:
     default: op

@@ -6,14 +6,14 @@
 
     <groupId>com.jackburkhardt.plugins.nusmp</groupId>
     <artifactId>nusmp-utilities</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>nusmp-utilities</name>
 
     <description>Utilities plugin for the Northwestern Survival Server.</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <url>https://jackburkhardt.com/</url>
