@@ -2,7 +2,6 @@ package com.jackburkhardt.plugins.listeners;
 
 import com.jackburkhardt.plugins.NUSMP;
 import com.jackburkhardt.plugins.WorldScalars;
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobSpawnEvent;
 import io.papermc.paper.event.player.PlayerTradeEvent;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -11,56 +10,53 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.loot.LootContext;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class Listeners implements Listener {
 
-    @EventHandler
-    public static void onPlayerCauseCreatureSpawn(CreatureSpawnEvent event) {
-        Location l = event.getLocation();
-        World w = l.getWorld();
-        if (w.getEnvironment() == World.Environment.NORMAL && event.getEntity() instanceof Monster
-        && event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.NATURAL) {
-            Random rnd = new Random();
-            int i = rnd.nextInt(1000) + 1;
-            if (i <= NUSMP.EVOKER_CHANCE) {
-                event.setCancelled(true);
-                Evoker evoker = (Evoker)w.spawnEntity(l, EntityType.EVOKER);
-                evoker.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.EVOKER_NEWHEALTH);
-                evoker.setHealth(NUSMP.EVOKER_NEWHEALTH);
-              //  Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob EVOKER spawn at " + l + " with HEALTH " + evoker.getHealth());
-            } else if (i <= NUSMP.ILLUSONER_CHANCE) {
-                event.setCancelled(true);
-                Illusioner illusioner = (Illusioner)w.spawnEntity(l, EntityType.ILLUSIONER);
-                illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.ILLUSIONER_NEWHEALTH);
-                illusioner.setHealth(NUSMP.ILLUSIONER_NEWHEALTH);
-               // Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
-            } else if (i <= NUSMP.VINDICATOR_CHANCE) {
-                event.setCancelled(true);
-                w.spawnEntity(l, EntityType.VINDICATOR);
-              //  Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
-            } else if (i <= NUSMP.CAVESPIDER_CHANCE) {
-                event.setCancelled(true);
-                w.spawnEntity(l, EntityType.CAVE_SPIDER);
-              //  Bukkit.broadcastMessage("Mob CAVESPIDER spawn at " + l);
-            }
-//            try {
-//                WorldScalars.mobSpawnDistanceCheck(event);
-//            } catch (Exception ex) {
-//               return;
+//    @EventHandler
+//    public static void onPlayerCauseCreatureSpawn(CreatureSpawnEvent event) {
+//        Location l = event.getLocation();
+//        World w = l.getWorld();
+//        if (w.getEnvironment() == World.Environment.NORMAL && event.getEntity() instanceof Monster
+//        && event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.NATURAL) {
+//            Random rnd = new Random();
+//            int i = rnd.nextInt(1000) + 1;
+//            if (i <= NUSMP.EVOKER_CHANCE) {
+//                event.setCancelled(true);
+//                Evoker evoker = (Evoker)w.spawnEntity(l, EntityType.EVOKER);
+//                evoker.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.EVOKER_NEWHEALTH);
+//                evoker.setHealth(NUSMP.EVOKER_NEWHEALTH);
+//              //  Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob EVOKER spawn at " + l + " with HEALTH " + evoker.getHealth());
+//            } else if (i <= NUSMP.ILLUSONER_CHANCE) {
+//                event.setCancelled(true);
+//                Illusioner illusioner = (Illusioner)w.spawnEntity(l, EntityType.ILLUSIONER);
+//                illusioner.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(NUSMP.ILLUSIONER_NEWHEALTH);
+//                illusioner.setHealth(NUSMP.ILLUSIONER_NEWHEALTH);
+//               // Bukkit.broadcastMessage(ChatColor.YELLOW + "Mob ILLUSIONER spawn at " + l + "with HEALTH " + illusioner.getHealth());
+//            } else if (i <= NUSMP.VINDICATOR_CHANCE) {
+//                event.setCancelled(true);
+//                w.spawnEntity(l, EntityType.VINDICATOR);
+//              //  Bukkit.broadcastMessage("Mob VINDICATOR spawn at " + l);
+//            } else if (i <= NUSMP.CAVESPIDER_CHANCE) {
+//                event.setCancelled(true);
+//                w.spawnEntity(l, EntityType.CAVE_SPIDER);
+//              //  Bukkit.broadcastMessage("Mob CAVESPIDER spawn at " + l);
 //            }
+////            try {
+////                WorldScalars.mobSpawnDistanceCheck(event);
+////            } catch (Exception ex) {
+////               return;
+////            }
+////        }
 //        }
-        }
-    }
+//    }
 
     @EventHandler
     public static void onLootGenerate(LootGenerateEvent event) {
