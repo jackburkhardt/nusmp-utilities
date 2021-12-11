@@ -20,6 +20,8 @@ commands:
     description: Gives the starting book.
     usage: /givestarterbook <player (optional)>
     permission-message: You don't have permission to give a book to another player.
+  lockserver:
+    description: Lock server to non-admin players.
 
 permissions:
   noreload.send:
@@ -27,4 +29,6 @@ permissions:
   nusmp.reload:
     default: op
   nusmp.givebookother:
+    default: op
+  nusmp.lockedbypass:
     default: op

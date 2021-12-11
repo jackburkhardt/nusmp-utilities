@@ -17,6 +17,7 @@ public final class NUSMP extends JavaPlugin {
     //public static WorldScalars scalarInstance = new WorldScalars();
     public static int EVOKER_CHANCE, VINDICATOR_CHANCE, CAVESPIDER_CHANCE, ILLUSONER_CHANCE;
     public static int EVOKER_NEWHEALTH, ILLUSIONER_NEWHEALTH, LUCK_ADD_CHANCE;
+    public boolean lockedMode;
 
     @Override
     public void onEnable() {
@@ -111,6 +112,22 @@ public final class NUSMP extends JavaPlugin {
             }
         }
 
+        if (command.getName().equalsIgnoreCase("lockserver") && args.length == 0) {
+
+            if (!sender.hasPermission("nusmp.lockedbypass")) {
+
+                sender.sendMessage(ChatColor.RED + "You don't have the proper permissions to use this command.");
+
+                return true;
+            }
+
+            lockedMode = !lockedMode;
+            sender.sendMessage(ChatColor.GREEN + "Locked mode has been set to " + lockedMode + ".");
+            getConfig().set("lockedMode", lockedMode);
+            return true;
+
+        }
+
     return true;
     }
 
@@ -127,6 +144,7 @@ public final class NUSMP extends JavaPlugin {
         VINDICATOR_CHANCE = getConfig().getInt("vindicatorChance");
         CAVESPIDER_CHANCE = getConfig().getInt("caveSpiderChance");
         LUCK_ADD_CHANCE = getConfig().getInt("addOneChance");
+        lockedMode = getConfig().getBoolean("lockedMode");
     }
 
     public static NUSMP getInstance() {

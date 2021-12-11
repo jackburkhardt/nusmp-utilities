@@ -3,7 +3,9 @@ package com.jackburkhardt.plugins.listeners;
 import com.jackburkhardt.plugins.NUSMP;
 import com.jackburkhardt.plugins.WorldScalars;
 import io.papermc.paper.event.player.PlayerTradeEvent;
+import net.ess3.api.events.PrivateMessageSentEvent;
 import net.ess3.api.events.teleport.TeleportWarmupEvent;
+import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -11,7 +13,11 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.VillagerCareerChangeEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.loot.LootContext;
@@ -107,10 +113,30 @@ public class Listeners implements Listener {
     }
 
     @EventHandler
+    public static void onEssMessagePlayer(PrivateMessageSentEvent event) {
+        String name = event.getRecipient().getName();
+        Player p = Bukkit.getPlayer(name);
+
+        if (p != null) {
+            p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 4, 1);
+        }
+    }
+
+    @EventHandler
+    public static void onAsyncPlayerLogin(PlayerLoginEvent event) {
+
+        if (NUSMP.getInstance().lockedMode && !event.getPlayer().hasPermission("nusmp.lockedbypass")) {
+
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Component.text(ChatColor.RED + "This server is currently not allowing player logins. See #minecraft in the Discord for updates."));
+        }
+
+    }
+
+ /*   @EventHandler
     public static void onPlayerJoin(PlayerJoinEvent event) {
         Player p = event.getPlayer();
         if (!p.hasPlayedBefore()) {
             NUSMP.getInstance().giveStarterBook(p);
         }
-    }
+    }*/
 }
