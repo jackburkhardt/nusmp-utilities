@@ -128,6 +128,20 @@ public final class NUSMP extends JavaPlugin {
 
         }
 
+        if (command.getName().equalsIgnoreCase("ping") && args.length == 0) {
+
+            Player p;
+            try {
+                p = Bukkit.getPlayer(sender.getName());
+            } catch (Exception e) {
+                sender.sendMessage(ChatColor.RED + "An error occured while attempting to perform this command.");
+                return true;
+            }
+
+            sender.sendMessage(ChatColor.LIGHT_PURPLE + "Pong! " + ChatColor.BOLD + "(" + p.getPing() + " ms)");
+
+        }
+
     return true;
     }
 

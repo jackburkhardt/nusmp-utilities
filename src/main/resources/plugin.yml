@@ -22,6 +22,8 @@ commands:
     permission-message: You don't have permission to give a book to another player.
   lockserver:
     description: Lock server to non-admin players.
+  ping:
+    description: Sends back your ping to the server.
 
 permissions:
   noreload.send:
