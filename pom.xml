@@ -6,7 +6,7 @@
 
     <groupId>com.jackburkhardt.plugins.nusmp</groupId>
     <artifactId>nusmp-utilities</artifactId>
-    <version>0.1.6</version>
+    <version>0.1.8</version>
     <packaging>jar</packaging>
 
     <name>nusmp-utilities</name>
